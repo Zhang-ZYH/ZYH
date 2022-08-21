@@ -8,7 +8,7 @@ import random
 
 
 os.environ['TZ'] = 'Asia/Shanghai'
-datetime.tzset()
+time.tzset()
 today = datetime.now()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
@@ -25,7 +25,7 @@ def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
   res = requests.get(url).json()
   weather = res['data']['list'][0]
-  return weather['weather'], math.floor(weather['temp'])
+  return weather['weather'],weather['low']+"-"weather["high"]
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
