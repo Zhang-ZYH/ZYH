@@ -8,6 +8,8 @@ import os
 import random
 
 
+os.environ['TZ'] = 'Asia/Shanghai'
+time.tzset()
 today = datetime.now()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
